@@ -27,7 +27,7 @@ directory node[:subversion][:repo_dir] do
   mode "0755"
 end
 
-web_app "subversion" do
+apache2_web_app "subversion" do
   template "subversion.conf.erb"
   server_name "#{node[:subversion][:server_name]}.#{node[:domain]}"
   notifies :restart, resources(:service => "apache2")
