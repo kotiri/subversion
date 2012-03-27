@@ -29,7 +29,7 @@ end
 
 apache2_web_app "subversion" do
   template "subversion.conf.erb"
-  server_name "#{node[:subversion][:server_name]}.#{node[:domain]}"
+  params({'server_name' => "#{node[:subversion][:server_name]}.#{node[:domain]}"})
   notifies :restart, resources(:service => "apache2")
 end
 
